@@ -1,0 +1,709 @@
+/* ================================= */
+/* APP */
+/* ================================= */
+
+.app-container {
+  min-height: 100vh;
+  width: 100%;
+
+  overflow: hidden;
+}
+
+
+/* ================================= */
+/* COMMON PAGE */
+/* ================================= */
+
+.page {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  animation: pageEnter 0.6s ease;
+}
+
+
+/* ================================= */
+/* INTRO PAGE */
+/* ================================= */
+
+.intro-page {
+  text-align: center;
+}
+
+.intro-content {
+  padding: 30px 10px;
+}
+
+.heart {
+  font-size: 3rem;
+  margin-bottom: 20px;
+
+  animation: heartBeat 1.5s infinite;
+}
+
+.intro-content h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+
+  margin-bottom: 20px;
+}
+
+.intro-text {
+  font-size: 1.25rem;
+
+  margin-bottom: 10px;
+}
+
+.intro-subtext {
+  font-size: 1rem;
+
+  margin-bottom: 30px;
+}
+
+
+/* ================================= */
+/* COMMON BUTTON */
+/* ================================= */
+
+.continue-btn {
+  padding: 12px 32px;
+
+  border-radius: 30px;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  border: none;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.continue-btn:hover {
+  transform: scale(1.05);
+}
+
+.continue-btn:active {
+  transform: scale(0.97);
+}
+
+
+/* ================================= */
+/* MEMORIES PAGE */
+/* ================================= */
+
+.memories-page {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.memory-content {
+  width: 100%;
+}
+
+.memory-content h2 {
+  font-size: 2rem;
+
+  font-weight: 700;
+
+  margin-bottom: 10px;
+}
+
+.memory-intro {
+  font-size: 1rem;
+
+  margin-bottom: 30px;
+}
+
+
+/* ================================= */
+/* PHOTO */
+/* ================================= */
+
+.photo-container {
+  width: 100%;
+  max-width: 450px;
+
+  margin: 0 auto 20px;
+
+  overflow: hidden;
+
+  border-radius: 20px;
+
+  background: #f5f5f5;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.memory-photo {
+  width: 100%;
+
+  height: min(65vh, 450px);
+
+  object-fit: cover;
+
+  display: block;
+
+  animation: photoEnter 0.5s ease;
+}
+
+
+/* ================================= */
+/* CAPTION */
+/* ================================= */
+
+.photo-caption {
+  max-width: 400px;
+
+  margin: 20px auto;
+
+  font-size: 1.05rem;
+
+  line-height: 1.6;
+}
+
+
+/* ================================= */
+/* INDICATORS */
+/* ================================= */
+
+.photo-indicators {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 25px;
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #ccc;
+
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  width: 24px;
+
+  border-radius: 10px;
+
+  background: #333;
+}
+
+
+/* ================================= */
+/* MESSAGE PAGE */
+/* ================================= */
+
+.message-page {
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  text-align: center;
+}
+
+.message-content {
+  padding: 20px 0;
+}
+
+.message-heart {
+  font-size: 3rem;
+
+  margin-bottom: 20px;
+
+  animation: heartBeat 1.5s infinite;
+}
+
+.message-content h2 {
+  font-size: 2rem;
+
+  font-weight: 700;
+
+  line-height: 1.3;
+
+  margin-bottom: 30px;
+}
+
+
+/* ================================= */
+/* MESSAGE CARD */
+/* ================================= */
+
+.message-card {
+  width: 100%;
+
+  max-width: 650px;
+
+  margin: 0 auto;
+
+  padding: 28px 22px;
+
+  border-radius: 20px;
+
+  line-height: 1.7;
+
+  font-size: 1rem;
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.08);
+
+  animation: messageAppear 0.8s ease;
+}
+
+.message-card p {
+  margin-bottom: 18px;
+}
+
+.message-card p:last-child {
+  margin-bottom: 0;
+}
+
+.final-question {
+  font-weight: 600;
+
+  margin-top: 25px !important;
+}
+
+
+/* ================================= */
+/* QUESTION */
+/* ================================= */
+
+.question-wrapper {
+  margin-top: 40px;
+}
+
+.question-wrapper h3 {
+  font-size: 1.4rem;
+
+  font-weight: 700;
+
+  margin-bottom: 30px;
+}
+
+
+/* ================================= */
+/* BUTTON AREA */
+/* ================================= */
+
+.question-area {
+  position: relative;
+
+  width: 100%;
+
+  max-width: 500px;
+
+  height: 180px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: flex-start;
+
+  gap: 20px;
+}
+
+
+/* ================================= */
+/* YES BUTTON */
+/* ================================= */
+
+.yes-button,
+.no-button {
+  width: 110px;
+
+  min-height: 48px;
+
+  border-radius: 30px;
+
+  font-weight: 700;
+
+  font-size: 0.95rem;
+
+  border: none;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.yes-button {
+  position: relative;
+
+  z-index: 2;
+}
+
+.yes-button:hover {
+  transform: scale(1.08);
+}
+
+
+/* ================================= */
+/* NO BUTTON */
+/* ================================= */
+
+.no-button {
+  position: fixed;
+
+  left: calc(50% + 10px);
+  top: 0;
+
+  width: 110px;
+  min-height: 50px;
+
+  border-radius: 30px;
+
+  font-weight: 700;
+  font-size: 0.95rem;
+
+  border: none;
+
+  cursor: pointer;
+
+  z-index: 9999;
+
+  transition:
+    left 0.15s ease,
+    top 0.15s ease,
+    transform 0.15s ease;
+
+  /* Prevent mobile browser from selecting */
+  user-select: none;
+
+  /* Keep touch interaction responsive */
+  touch-action: none;
+}
+
+
+.no-button:hover {
+  transform: scale(1.03);
+}
+
+
+/*
+ * Once the button starts escaping,
+ * its position is controlled completely
+ * by TypeScript.
+ */
+
+.no-button-moved {
+  position: fixed;
+}
+
+
+/* ================================= */
+/* CELEBRATION */
+/* ================================= */
+
+.celebration-page {
+  position: relative;
+
+  overflow: hidden;
+
+  text-align: center;
+}
+
+.celebration-content {
+  position: relative;
+
+  z-index: 5;
+
+  padding: 30px 10px;
+}
+
+.celebration-heart {
+  font-size: 5rem;
+
+  margin-bottom: 20px;
+
+  animation:
+    celebrationHeart 1s infinite alternate;
+}
+
+.celebration-content h1 {
+  font-size: 2.5rem;
+
+  font-weight: 800;
+
+  margin-bottom: 20px;
+}
+
+.celebration-text {
+  font-size: 1.25rem;
+
+  margin-bottom: 30px;
+}
+
+.celebration-message {
+  max-width: 550px;
+
+  margin: 0 auto;
+
+  line-height: 1.7;
+
+  font-size: 1rem;
+}
+
+.celebration-emoji {
+  font-size: 2rem;
+
+  margin-top: 30px;
+}
+
+
+/* ================================= */
+/* FLOATING HEARTS */
+/* ================================= */
+
+.floating-hearts {
+  position: absolute;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+.floating-hearts span {
+  position: absolute;
+
+  bottom: -60px;
+
+  font-size: 2rem;
+
+  animation: floatHeart 6s linear infinite;
+
+  opacity: 0.8;
+}
+
+.floating-hearts span:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.floating-hearts span:nth-child(2) {
+  left: 25%;
+  animation-delay: 1.2s;
+}
+
+.floating-hearts span:nth-child(3) {
+  left: 40%;
+  animation-delay: 2.5s;
+}
+
+.floating-hearts span:nth-child(4) {
+  left: 55%;
+  animation-delay: 0.8s;
+}
+
+.floating-hearts span:nth-child(5) {
+  left: 70%;
+  animation-delay: 3s;
+}
+
+.floating-hearts span:nth-child(6) {
+  left: 80%;
+  animation-delay: 1.8s;
+}
+
+.floating-hearts span:nth-child(7) {
+  left: 90%;
+  animation-delay: 4s;
+}
+
+.floating-hearts span:nth-child(8) {
+  left: 50%;
+  animation-delay: 4.5s;
+}
+
+
+/* ================================= */
+/* ANIMATIONS */
+/* ================================= */
+
+@keyframes pageEnter {
+
+  from {
+    opacity: 0;
+
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+
+}
+
+
+@keyframes photoEnter {
+
+  from {
+    opacity: 0;
+
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: scale(1);
+  }
+
+}
+
+
+@keyframes messageAppear {
+
+  from {
+    opacity: 0;
+
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+
+}
+
+
+@keyframes heartBeat {
+
+  0% {
+    transform: scale(1);
+  }
+
+  14% {
+    transform: scale(1.15);
+  }
+
+  28% {
+    transform: scale(1);
+  }
+
+  42% {
+    transform: scale(1.15);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+
+}
+
+
+@keyframes celebrationHeart {
+
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.2);
+  }
+
+}
+
+
+@keyframes floatHeart {
+
+  0% {
+    transform:
+      translateY(0)
+      rotate(0deg);
+
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.8;
+  }
+
+  100% {
+    transform:
+      translateY(-110vh)
+      rotate(360deg);
+
+    opacity: 0;
+  }
+
+}
+
+
+/* ================================= */
+/* TABLET */
+/* ================================= */
+
+@media (min-width: 768px) {
+
+  .intro-content h1 {
+    font-size: 3rem;
+  }
+
+  .memory-content h2 {
+    font-size: 2.5rem;
+  }
+
+  .memory-photo {
+    height: 550px;
+  }
+
+  .message-content h2 {
+    font-size: 2.5rem;
+  }
+
+  .message-card {
+    padding: 35px;
+  }
+
+  .question-area {
+    height: 220px;
+  }
+
+  .celebration-content h1 {
+    font-size: 3.5rem;
+  }
+
+}
+
+
+/* ================================= */
+/* LARGE DESKTOP */
+/* ================================= */
+
+@media (min-width: 1200px) {
+
+  .page {
+    padding: 40px;
+  }
+
+  .memory-photo {
+    max-height: 600px;
+  }
+
+}

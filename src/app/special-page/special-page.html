@@ -1,0 +1,308 @@
+<div class="app-container">
+
+
+    <!-- ========================================= -->
+    <!-- PAGE 1 : INTRODUCTION -->
+    <!-- ========================================= -->
+
+    <section *ngIf="currentPage === 1" class="page intro-page">
+
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <div class="col-12 col-md-8 col-lg-6">
+
+                    <div class="intro-content text-center">
+
+                        <div class="heart">
+                            ❤️
+                        </div>
+
+                        <h1>
+                            Hey...
+                        </h1>
+
+                        <p class="intro-text">
+                            I made something small for you.
+                        </p>
+
+                        <p class="intro-subtext">
+                            Take a little time and go through it. 😊
+                        </p>
+
+                        <button type="button" class="btn continue-btn" (click)="goToPage(2)">
+
+                            Continue →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <!-- ========================================= -->
+    <!-- PAGE 2 : MEMORIES -->
+    <!-- ========================================= -->
+
+    <section *ngIf="currentPage === 2" class="page memories-page">
+
+        <div class="container">
+
+            <div class="row justify-content-center">
+
+                <div class="col-12 col-md-9 col-lg-7">
+
+                    <div class="memory-content text-center">
+
+                        <h2>
+                            Some Memories 📸
+                        </h2>
+
+                        <p class="memory-intro">
+                            A few moments I wanted to share with you.
+                        </p>
+
+
+                        <!-- PHOTO -->
+
+                        <div class="photo-container">
+
+                            <img [src]="photos[currentPhotoIndex].image" [alt]="photos[currentPhotoIndex].caption"
+                                class="memory-photo">
+
+                        </div>
+
+
+                        <!-- CAPTION -->
+
+                        <p class="photo-caption">
+                            {{ photos[currentPhotoIndex].caption }}
+                        </p>
+
+
+                        <!-- INDICATORS -->
+
+                        <div class="photo-indicators">
+
+                            <span *ngFor="let photo of photos; let i = index" class="indicator"
+                                [class.active]="i === currentPhotoIndex">
+                            </span>
+
+                        </div>
+
+
+                        <!-- NEXT -->
+
+                        <button type="button" class="btn continue-btn" (click)="nextPhoto()">
+
+                            {{
+                            currentPhotoIndex === photos.length - 1
+                            ? 'There’s something else →'
+                            : 'Next →'
+                            }}
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ========================================= -->
+    <!-- PAGE 3 : MESSAGE -->
+    <!-- ========================================= -->
+
+    <section *ngIf="currentPage === 3" class="page message-page">
+
+        <div class="container">
+
+            <div class="row justify-content-center">
+
+                <div class="col-12 col-md-10 col-lg-8">
+
+                    <div class="message-content text-center">
+
+
+                        <!-- HEART -->
+
+                        <div class="message-heart">
+                            💌
+                        </div>
+
+
+                        <!-- TITLE -->
+
+                        <h2>
+                            There's something I want to tell you...
+                        </h2>
+
+
+                        <!-- MESSAGE CARD -->
+
+                        <div class="message-card">
+
+                            <p>
+                                You have become someone really special to me.
+                            </p>
+
+                            <p>
+                                I don't know exactly how to put everything
+                                into words, so I thought I would make this
+                                little page instead. ❤️
+                            </p>
+
+                            <p>
+                                Every conversation, every laugh and every
+                                little moment with you means more to me
+                                than you probably realize.
+                            </p>
+
+                            <p class="final-question">
+                                So... I have one little question for you.
+                            </p>
+
+                        </div>
+
+
+                        <!-- QUESTION -->
+
+                        <div class="question-wrapper">
+
+                            <h3>
+                                Will you say YES? ❤️
+                            </h3>
+
+
+                            <!-- BUTTON AREA -->
+
+                            <div #questionArea class="question-area">
+
+
+                                <!-- YES -->
+
+                                <button type="button" class="btn yes-button" (click)="sayYes()">
+
+                                    YES ❤️
+
+                                </button>
+
+
+                                <!-- NO -->
+
+                                <button type="button" class="btn no-button" [class.no-button-moved]="noButtonMoved"
+                                    [style.left.px]="noButtonMoved ? noButtonX : null"
+                                    [style.top.px]="noButtonMoved ? noButtonY : null" (mouseenter)="moveNoButton()"
+                                    (touchstart)="onNoButtonInteraction($event)"
+                                    (click)="onNoButtonInteraction($event)">
+
+                                    NO 😅
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ========================================= -->
+    <!-- PAGE 4 : YES / CELEBRATION -->
+    <!-- ========================================= -->
+
+    <section *ngIf="currentPage === 4" class="page celebration-page">
+
+
+        <!-- FLOATING HEARTS -->
+
+        <div class="floating-hearts">
+
+            <span>❤️</span>
+            <span>💗</span>
+            <span>💕</span>
+            <span>💖</span>
+            <span>❤️</span>
+            <span>💗</span>
+            <span>💕</span>
+            <span>💖</span>
+
+        </div>
+
+
+        <div class="container">
+
+            <div class="row justify-content-center">
+
+                <div class="col-12 col-md-9 col-lg-7">
+
+                    <div class="celebration-content text-center">
+
+
+                        <div class="celebration-heart">
+                            ❤️
+                        </div>
+
+
+                        <h1>
+                            You said YES! 🥹
+                        </h1>
+
+
+                        <p class="celebration-text">
+                            I was really hoping you would. ❤️
+                        </p>
+
+
+                        <div class="celebration-message">
+
+                            <p>
+                                Thank you for taking the time to go through
+                                this little thing I made for you.
+                            </p>
+
+                            <p>
+                                Whatever happens next,
+                                I'm really glad I got to share this with you. ❤️
+                            </p>
+
+                        </div>
+
+
+                        <div class="celebration-emoji">
+                            🎉 ❤️ 🎉
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
