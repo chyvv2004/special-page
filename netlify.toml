@@ -1,6 +1,6 @@
 [build]
   command = "npm run build"
-  publish = "dist/dpecial-page/browser"
+  publish = "dist/special-page/browser"
 
 [build.environment]
   NODE_VERSION = "20"
