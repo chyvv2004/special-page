@@ -1,6 +1,11 @@
 [build]
   command = "npm run build"
-  publish = "dist/special-page/browser"
+  publish = "dist/special-page/browser/varma"
 
 [build.environment]
   NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
