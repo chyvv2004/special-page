@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 interface Photo {
@@ -16,320 +16,101 @@ export class SpecialPage {
   currentPage = 1;
 
   photos: Photo[] = [
-    {
-      image: 'assets/photos/photo1.jpg',
-      caption: 'A beautiful memory ❤️'
-    },
-    {
-      image: 'assets/photos/photo2.jpg',
-      caption: 'One of those moments worth remembering 😊'
-    },
-    {
-      image: 'assets/photos/photo3.jpg',
-      caption: 'Another little memory ✨'
-    },
-    {
-      image: 'assets/photos/photo4.jpg',
-      caption: 'And this one... ❤️'
-    }
+    { image: '/assets/IMG-20260818-WA0010.jpg', caption: 'Nee smile chusthe chaalu, aa moment automatic ga beautiful aipothundi ❤️' },
+    { image: '/assets/IMG-20260629-WA0094.jpg', caption: 'Nuvvu em chesina, enduko oka special vibe untundi nee lo ✨' },
+    { image: '/assets/IMG-20251211-WA0008.jpg', caption: 'Ee pic lo chala cute ga unnavu… chusthe automatic ga muddu pettalani undi 😍😘' },
+    { image: '/assets/IMG-20260115-WA0013.jpg', caption: 'Nuvvu simple ga unna kuda, somehow chala special ga kanipistav 💗😘' },
+    { image: '/assets/IMG-20260629-WA0045.jpg', caption: 'Ninnu special chesedi nee looks matrame kaadu… nee way of being ishtam ✨' },
+    { image: '/assets/IMG-20251227-WA0003.jpg', caption: 'Ee sunset entha beautiful ga unna, naa attention matram nee daggare aagipoyindi ❤️' },
+    { image: 'assets/IMG-20260209-WA0035.jpg', caption: 'Heart ni ila hands tho chupinchav… kaani naaku anipinchindi, naa heart already nee daggare undipoyindi ani ❤️😘' },
+    { image: 'assets/IMG-20260812-WA0051.jpg', caption: 'Nuvvu entha simple ga unna, nee presence matram eppudu simple ga undadu… attention motham nee meedake vasthundi  💕🥰❤️' },
   ];
 
   currentPhotoIndex = 0;
 
-
-  /* ================================= */
-  /* NO BUTTON POSITION */
-  /* ================================= */
-
+  // No-button position
   noButtonX = 0;
   noButtonY = 0;
-
   noButtonMoved = false;
 
   private readonly BUTTON_WIDTH = 110;
   private readonly BUTTON_HEIGHT = 50;
 
-  private readonly SAFE_DISTANCE = 150;
-
-
-  /* ================================= */
-  /* PAGE NAVIGATION */
-  /* ================================= */
-
+  // Page navigation
   goToPage(page: number): void {
-
     this.currentPage = page;
-
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-
   }
 
-
-  /* ================================= */
-  /* PHOTO NAVIGATION */
-  /* ================================= */
-
+  // Photo navigation
   nextPhoto(): void {
-
     if (this.currentPhotoIndex < this.photos.length - 1) {
-
       this.currentPhotoIndex++;
-
     } else {
-
       this.goToPage(3);
-
     }
-
   }
 
-
-  /* ================================= */
-  /* DETECT MOUSE APPROACH */
-  /* ================================= */
-
-  @HostListener('document:mousemove', ['$event'])
-  onMouseMove(event: MouseEvent): void {
-
-    if (this.currentPage !== 3) {
-      return;
+  previousPhoto(): void {
+    if (this.currentPhotoIndex > 0) {
+      this.currentPhotoIndex--;
     }
-
-    const button = document.querySelector(
-      '.no-button'
-    ) as HTMLElement | null;
-
-    if (!button) {
-      return;
-    }
-
-    const rect = button.getBoundingClientRect();
-
-    const buttonCenterX =
-      rect.left + rect.width / 2;
-
-    const buttonCenterY =
-      rect.top + rect.height / 2;
-
-
-    const distanceX =
-      event.clientX - buttonCenterX;
-
-    const distanceY =
-      event.clientY - buttonCenterY;
-
-
-    const distance =
-      Math.sqrt(
-        distanceX * distanceX +
-        distanceY * distanceY
-      );
-
-
-    /*
-     * If cursor gets close enough,
-     * move the button somewhere else
-     * on the entire screen.
-     */
-
-    if (distance < this.SAFE_DISTANCE) {
-
-      this.moveNoButton();
-
-    }
-
   }
-
-
-  /* ================================= */
-  /* TOUCH / CLICK */
-  /* ================================= */
-
+  
   onNoButtonInteraction(event: Event): void {
-
     event.preventDefault();
-
     this.moveNoButton();
-
   }
 
-
-  /* ================================= */
-  /* MOVE BUTTON ANYWHERE */
-  /* ================================= */
-
+  // Move the "no" button to a random (or corner-biased) spot on screen
   moveNoButton(): void {
-
-    /*
-     * Width and height of the visible screen.
-     */
-
     const screenWidth = window.innerWidth;
-
     const screenHeight = window.innerHeight;
-
-
-    /*
-     * Keep a small margin from the edges.
-     */
-
     const margin = 15;
 
+    const maxX = screenWidth - this.BUTTON_WIDTH - margin;
+    const maxY = screenHeight - this.BUTTON_HEIGHT - margin;
 
-    const maxX =
-      screenWidth -
-      this.BUTTON_WIDTH -
-      margin;
+    let randomX = margin + Math.random() * (maxX - margin);
+    let randomY = margin + Math.random() * (maxY - margin);
 
-
-    const maxY =
-      screenHeight -
-      this.BUTTON_HEIGHT -
-      margin;
-
-
-    /*
-     * Generate random position.
-     */
-
-    let randomX =
-      margin +
-      Math.random() * (maxX - margin);
-
-
-    let randomY =
-      margin +
-      Math.random() * (maxY - margin);
-
-
-    /*
-     * Occasionally force the button
-     * toward a random screen region.
-     *
-     * This makes the movement feel
-     * much more unpredictable.
-     */
-
-    const locationType =
-      Math.floor(Math.random() * 8);
-
+    // Occasionally snap to a screen region so the movement feels less predictable
+    const locationType = Math.floor(Math.random() * 8);
 
     switch (locationType) {
-
-      /* TOP LEFT */
-
-      case 0:
-
+      case 0: // top left
         randomX = margin;
         randomY = margin;
-
         break;
-
-
-      /* TOP RIGHT */
-
-      case 1:
-
-        randomX =
-          screenWidth -
-          this.BUTTON_WIDTH -
-          margin;
-
+      case 1: // top right
+        randomX = screenWidth - this.BUTTON_WIDTH - margin;
         randomY = margin;
-
         break;
-
-
-      /* BOTTOM LEFT */
-
-      case 2:
-
+      case 2: // bottom left
         randomX = margin;
-
-        randomY =
-          screenHeight -
-          this.BUTTON_HEIGHT -
-          margin;
-
+        randomY = screenHeight - this.BUTTON_HEIGHT - margin;
         break;
-
-
-      /* BOTTOM RIGHT */
-
-      case 3:
-
-        randomX =
-          screenWidth -
-          this.BUTTON_WIDTH -
-          margin;
-
-        randomY =
-          screenHeight -
-          this.BUTTON_HEIGHT -
-          margin;
-
+      case 3: // bottom right
+        randomX = screenWidth - this.BUTTON_WIDTH - margin;
+        randomY = screenHeight - this.BUTTON_HEIGHT - margin;
         break;
-
-
-      /* TOP CENTER */
-
-      case 4:
-
-        randomX =
-          screenWidth / 2 -
-          this.BUTTON_WIDTH / 2;
-
+      case 4: // top center
+        randomX = screenWidth / 2 - this.BUTTON_WIDTH / 2;
         randomY = margin;
-
         break;
-
-
-      /* BOTTOM CENTER */
-
-      case 5:
-
-        randomX =
-          screenWidth / 2 -
-          this.BUTTON_WIDTH / 2;
-
-        randomY =
-          screenHeight -
-          this.BUTTON_HEIGHT -
-          margin;
-
+      case 5: // bottom center
+        randomX = screenWidth / 2 - this.BUTTON_WIDTH / 2;
+        randomY = screenHeight - this.BUTTON_HEIGHT - margin;
         break;
-
-
-      /* RANDOM */
-
-      case 6:
-      case 7:
-
-        // Keep the random position
-
+      default: // keep the random position
         break;
-
     }
 
-
     this.noButtonX = randomX;
-
     this.noButtonY = randomY;
-
     this.noButtonMoved = true;
-
   }
 
-
-  /* ================================= */
-  /* YES */
-  /* ================================= */
-
   sayYes(): void {
-
     this.goToPage(4);
   }
 }

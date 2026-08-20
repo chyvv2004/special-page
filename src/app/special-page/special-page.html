@@ -1,308 +1,186 @@
 <div class="app-container">
 
-
-    <!-- ========================================= -->
-    <!-- PAGE 1 : INTRODUCTION -->
-    <!-- ========================================= -->
-
+    <!-- PAGE 1: INTRO -->
     <section *ngIf="currentPage === 1" class="page intro-page">
-
         <div class="container">
             <div class="row justify-content-center">
-
                 <div class="col-12 col-md-8 col-lg-6">
-
                     <div class="intro-content text-center">
-
-                        <div class="heart">
-                            ❤️
-                        </div>
-
-                        <h1>
-                            Hey...
-                        </h1>
-
-                        <p class="intro-text">
-                            I made something small for you.
-                        </p>
-
-                        <p class="intro-subtext">
-                            Take a little time and go through it. 😊
-                        </p>
-
+                        <div class="heart">❤️</div>
+                        <h1>Hey...</h1>
+                        <p class="intro-text">I made something small for you.</p>
+                        <p class="intro-subtext">Take a little time and go through it. 😊</p>
                         <button type="button" class="btn continue-btn" (click)="goToPage(2)">
-
                             Continue →
-
                         </button>
-
                     </div>
-
                 </div>
-
             </div>
         </div>
-
     </section>
 
-
-
-    <!-- ========================================= -->
-    <!-- PAGE 2 : MEMORIES -->
-    <!-- ========================================= -->
-
+    <!-- PAGE 2: MEMORIES -->
     <section *ngIf="currentPage === 2" class="page memories-page">
-
         <div class="container">
-
             <div class="row justify-content-center">
-
                 <div class="col-12 col-md-9 col-lg-7">
-
                     <div class="memory-content text-center">
-
-                        <h2>
-                            Some Memories 📸
-                        </h2>
-
-                        <p class="memory-intro">
-                            A few moments I wanted to share with you.
-                        </p>
-
-
-                        <!-- PHOTO -->
+                        <h2>Some Memories 📸</h2>
+                        <p class="memory-intro">A few moments I wanted to share with you.</p>
 
                         <div class="photo-container">
-
                             <img [src]="photos[currentPhotoIndex].image" [alt]="photos[currentPhotoIndex].caption"
-                                class="memory-photo">
-
+                                class="memory-photo" />
                         </div>
 
-
-                        <!-- CAPTION -->
-
-                        <p class="photo-caption">
-                            {{ photos[currentPhotoIndex].caption }}
-                        </p>
-
-
-                        <!-- INDICATORS -->
+                        <p class="photo-caption">{{ photos[currentPhotoIndex].caption }}</p>
 
                         <div class="photo-indicators">
-
                             <span *ngFor="let photo of photos; let i = index" class="indicator"
-                                [class.active]="i === currentPhotoIndex">
-                            </span>
+                                [class.active]="i === currentPhotoIndex"></span>
+                        </div>
+                        <div class="photo-navigation">
+                            <button type="button" class="btn photo-nav-btn previous-btn" (click)="previousPhoto()"
+                                [disabled]="currentPhotoIndex === 0">
+                                ← Previous
+                            </button>
+
+                            <button type="button" class="btn photo-nav-btn next-btn" (click)="nextPhoto()">
+                                {{ currentPhotoIndex === photos.length - 1 ? 'There’s something else →' : 'Next →' }}
+                            </button>
 
                         </div>
-
-
-                        <!-- NEXT -->
-
-                        <button type="button" class="btn continue-btn" (click)="nextPhoto()">
-
-                            {{
-                            currentPhotoIndex === photos.length - 1
-                            ? 'There’s something else →'
-                            : 'Next →'
-                            }}
-
-                        </button>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
 
-
-
-    <!-- ========================================= -->
-    <!-- PAGE 3 : MESSAGE -->
-    <!-- ========================================= -->
-
+    <!-- PAGE 3: MESSAGE -->
     <section *ngIf="currentPage === 3" class="page message-page">
-
         <div class="container">
-
             <div class="row justify-content-center">
-
                 <div class="col-12 col-md-10 col-lg-8">
-
                     <div class="message-content text-center">
-
-
-                        <!-- HEART -->
-
-                        <div class="message-heart">
-                            💌
-                        </div>
-
-
-                        <!-- TITLE -->
-
-                        <h2>
-                            There's something I want to tell you...
-                        </h2>
-
-
-                        <!-- MESSAGE CARD -->
+                        <div class="message-heart">💌</div>
+                        <h2>There's something I want to tell you...</h2>
 
                         <div class="message-card">
+                            <div class="message-card">
+                                <p>
+                                    Kontha mandi mana life loki ela vacharo kuda teliyadu...
+                                    kaani vachaka, vallatho maatladina prathi moment special ga anipisthundi.
+                                </p>
 
-                            <p>
-                                You have become someone really special to me.
-                            </p>
+                                <p>
+                                    Nuvvu kuda alane na life lo oka beautiful part ayipoyav.
+                                    Nee tho maatladina prathi sari, nee smile chusina prathi sari,
+                                    teliyakundane naa face meeda oka smile vasthundi. ❤️
+                                </p>
 
-                            <p>
-                                I don't know exactly how to put everything
-                                into words, so I thought I would make this
-                                little page instead. ❤️
-                            </p>
+                                <p>
+                                    Eppudu ninnu chusthu, "inka konchem sepu matladali",
+                                    "inka konchem time spend cheyyali" ani anipisthundi.
+                                    Maybe idi just friendship kanna ekkuvemo...
+                                </p>
 
-                            <p>
-                                Every conversation, every laugh and every
-                                little moment with you means more to me
-                                than you probably realize.
-                            </p>
+                                <p>
+                                    Nuvvu naaku entha special ayipoyavo cheppadaniki
+                                    perfect words na daggara levu.
+                                    Kaani oka vishayam matram naaku clear ga telusu...
+                                    <strong>nee tho inka chala memories create cheyyali ani undi. ❤️</strong>
+                                </p>
 
-                            <p class="final-question">
-                                So... I have one little question for you.
-                            </p>
-
+                                <p class="final-question">
+                                    Anduke... ee little page kanna,
+                                    naa heart lo unna little feeling ni kuda konchem ardham chesukuntav ani hope
+                                    chesthunna. ❤️
+                                </p>
+                            </div>
                         </div>
 
-
-                        <!-- QUESTION -->
-
                         <div class="question-wrapper">
-
-                            <h3>
-                                Will you say YES? ❤️
-                            </h3>
-
-
-                            <!-- BUTTON AREA -->
+                            <h3>Will you say YES? ❤️</h3>
 
                             <div #questionArea class="question-area">
-
-
-                                <!-- YES -->
-
                                 <button type="button" class="btn yes-button" (click)="sayYes()">
-
                                     YES ❤️
-
                                 </button>
-
-
-                                <!-- NO -->
 
                                 <button type="button" class="btn no-button" [class.no-button-moved]="noButtonMoved"
                                     [style.left.px]="noButtonMoved ? noButtonX : null"
                                     [style.top.px]="noButtonMoved ? noButtonY : null" (mouseenter)="moveNoButton()"
                                     (touchstart)="onNoButtonInteraction($event)"
                                     (click)="onNoButtonInteraction($event)">
-
                                     NO 😅
-
                                 </button>
-
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
 
-
-
-    <!-- ========================================= -->
-    <!-- PAGE 4 : YES / CELEBRATION -->
-    <!-- ========================================= -->
-
+    <!-- PAGE 4: CELEBRATION -->
     <section *ngIf="currentPage === 4" class="page celebration-page">
-
-
-        <!-- FLOATING HEARTS -->
-
         <div class="floating-hearts">
-
-            <span>❤️</span>
-            <span>💗</span>
-            <span>💕</span>
-            <span>💖</span>
-            <span>❤️</span>
-            <span>💗</span>
-            <span>💕</span>
-            <span>💖</span>
-
+            <span>❤️</span><span>💗</span><span>💕</span><span>💖</span>
+            <span>❤️</span><span>💗</span><span>💕</span><span>💖</span>
         </div>
 
-
         <div class="container">
-
             <div class="row justify-content-center">
-
                 <div class="col-12 col-md-9 col-lg-7">
-
                     <div class="celebration-content text-center">
 
+                        <div class="celebration-heart">❤️</div>
 
-                        <div class="celebration-heart">
-                            ❤️
-                        </div>
-
-
-                        <h1>
-                            You said YES! 🥹
-                        </h1>
-
+                        <h1>So... it's a YES! 🥹</h1>
 
                         <p class="celebration-text">
-                            I was really hoping you would. ❤️
+                            Nuvvu YES ani cheppav ante...
+                            honestly, aa moment ni nenu words lo cheppalenu. ❤️
                         </p>
-
 
                         <div class="celebration-message">
 
                             <p>
-                                Thank you for taking the time to go through
-                                this little thing I made for you.
+                                Ninnu first time kalisinappudu, oka roju ilaanti moment
+                                vastundani assalu anukoledu.
                             </p>
 
                             <p>
-                                Whatever happens next,
-                                I'm really glad I got to share this with you. ❤️
+                                Kaani konni conversations, konni laughs,
+                                konni chinna chinna moments...
+                                teliyakundane oka person ni chala special ga marchestayi. 💕
+                            </p>
+
+                            <p>
+                                Nuvvu na life lo exactly em avuthavo naaku teliyadu...
+                                kaani ippudu varaku vachina journey matram
+                                naaku chala special. ❤️
+                            </p>
+
+                            <p>
+                                And today, nee YES tho...
+                                aa story ki oka beautiful beginning dorikindemo anipistundi. 🥹
+                            </p>
+
+                            <p class="final-love-message">
+                                So, thank you for saying YES...
+                                and mostly, thank you for being <strong>you</strong>. ❤️
                             </p>
 
                         </div>
-
 
                         <div class="celebration-emoji">
                             🎉 ❤️ 🎉
                         </div>
 
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
-
 </div>
